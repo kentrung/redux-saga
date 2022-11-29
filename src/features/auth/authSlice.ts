@@ -1,7 +1,7 @@
 import { User } from 'models/user';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface LoginPayload {
+export interface LoginPayload {
   username: string;
   password: string;
 }
@@ -33,6 +33,7 @@ const authSlice = createSlice({
     loginFailed(state, action: PayloadAction<string>) {
       state.logging = false;
       state.isLoggedIn = false;
+      state.currentUser = undefined;
     },
 
     logout(state) {
@@ -42,7 +43,7 @@ const authSlice = createSlice({
   },
 });
 
-// Export action
+// Export actions
 export const authActions = authSlice.actions;
 
 // Export selectors
